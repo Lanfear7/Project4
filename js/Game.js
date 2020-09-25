@@ -28,9 +28,10 @@ class Game {
             startBackground.style.display = 'none'
 
             //this will call getRandomPhrase\/
-            let g = this.getRandomPhrase()
-            console.log(g)
-            this.addPhraseToDisplay()
+            const random= new Phrase(this.getRandomPhrase().phrase);
+            random.addPhraseToDisplay(randomPhrase);
+            this.handelInteraction()
+
             
         })
 
@@ -39,11 +40,9 @@ class Game {
 
     getRandomPhrase(){
         //get random number
-        let randomNum = Math.floor(Math.random() * 6);
-        console.log(randomNum);
+        let randomNum = Math.floor(Math.random() * this.phrase.length);
         //this will log the value of the phrase object in the phrase array to the console 
         let randomPhrase = this.phrase[randomNum].phrase;
-        console.log(randomPhrase);
         this.activePhrase = randomPhrase;
         return randomPhrase;
 
@@ -51,13 +50,20 @@ class Game {
 
 
     handelInteraction(){
+        let keyBoard = document.querySelectorAll('.key');
+        for (let i = 0; i < keyBoard.length; i++){
+            keyBoard[i].addEventListener('click', (e) => {
+                console.log(e.target);
+            })
+        }
 
 
     }
 
 
     removeLife(){
-
+        let life = document.querySelectorAll('.tries')
+        console.log(life);
 
     }
 

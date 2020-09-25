@@ -16,9 +16,9 @@ class Phrase{
         let div = document.querySelector('#phrase')
         let ul = document.querySelector('ul')
 
-        let lowerCase = this.phrase.toLowerCase();
+        console.log(this.phrase)
+        let lower = this.phrase.toLowerCase();
         //this will change HEllO to hello/ log each letter 
-        console.log(lowerCase)
         for(let i = 0; i < this.phrase.length; i++ ){
             if(this.phrase[i] !== ' '){
                 let li = document.createElement('li');
