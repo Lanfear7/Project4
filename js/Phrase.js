@@ -51,20 +51,23 @@ class Phrase{
 
         for (let i = 0; i < keyboard.length; i++){
             keyboard[i].addEventListener('click', (e) =>{
-                console.log(e.target.textContent);
                 //if the letter matches any letter in our phrase 
                 letters.forEach(letter => {
                     console.log(letter)
                     if(e.target.textContent == letter){ 
                         console.log('match')
+                        console.log(letter)
+                        letter.setAttribute('class', 'show');
+                        console.log(letter)
                     }
                 })
-            });
-        }
-        
 
-        
+            });
+
+        } 
     }
+
+
     showMatchedNumber(){}
 }
 //test phrase 
