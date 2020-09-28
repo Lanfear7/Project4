@@ -1,39 +1,36 @@
 class Game {
 
-    constructor(missed, phrase, activePhrase){
-        this.missed = missed;
-        this.phrase = phrase;
-        this.activePhrase = activePhrase;
-
+    constructor(){
+        let game = document.getElementById('btn__reset');
+        game.addEventListener('click', (e) =>{
+            let startBackground = document.querySelector('#overlay')
+            startBackground.style.display = 'none'
+            this.startGame()
+        });
         this.missed  = 0;
         this.phrase = [
             {phrase: 'It is what it is'},
-            {phrase: 'Jones Good Ass BBQ and Foot Massage'},
+            {phrase: 'Jones BBQ and Foot Massage'},
             {phrase: 'What are those'},
             {phrase: 'yankee with no brim'},
             {phrase: 'brim with no yankee'},
-            {phrase: 'now thats alot of damage'}
+            {phrase: 'now thats alot of damage'},
+            {phrase: 'Thats free real estate'}
         ]
         this.activePhrase = null;
 
 
     }
-
+   
     startGame(){
-        let startBtn = document.querySelector('#btn__reset')
-        let startBackground = document.querySelector('#overlay')
-
-        startBtn.addEventListener('click', (e) => {
-            console.log(e.target)
-            startBackground.style.display = 'none'
-
-            //this will call getRandomPhrase\/
-            const random= new Phrase(this.getRandomPhrase().phrase);
-            random.addPhraseToDisplay(randomPhrase);
-            this.handelInteraction()
-
-            
-        })
+        //this will call getRandomPhrase\/
+        const random = this.getRandomPhrase()
+        this.activePhrase = random
+        //setting a instance of newPhrase and passing it the random phrase so the Phrase class can add that phrase to the DOM
+        new Phrase(random).addPhraseToDisplay()
+        new Phrase(random).checkLetter()
+        //adding the logic to the game wit the handelInteraction class method 
+        this.handelInteraction()
 
     }
 
@@ -43,7 +40,6 @@ class Game {
         let randomNum = Math.floor(Math.random() * this.phrase.length);
         //this will log the value of the phrase object in the phrase array to the console 
         let randomPhrase = this.phrase[randomNum].phrase;
-        this.activePhrase = randomPhrase;
         return randomPhrase;
 
     }
@@ -51,11 +47,12 @@ class Game {
 
     handelInteraction(){
         let keyBoard = document.querySelectorAll('.key');
-        for (let i = 0; i < keyBoard.length; i++){
-            keyBoard[i].addEventListener('click', (e) => {
-                console.log(e.target);
-            })
-        }
+        let DOMphrase = document.getElementById('phrase')
+        let ul = DOMphrase.childNodes
+        let phrases = ul[1].childNodes
+
+        //for loop to to a listener on the keys 
+       
 
 
     }

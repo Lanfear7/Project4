@@ -6,6 +6,7 @@
 class Phrase{
     //constructor to be able to use the phrase
     constructor(phrase){
+        //this will save the phrase phrase of the Phrase object 
         this.phrase = phrase
 
     }
@@ -18,39 +19,46 @@ class Phrase{
 
         console.log(this.phrase)
         let lower = this.phrase.toLowerCase();
+        console.log(lower)
         //this will change HEllO to hello/ log each letter 
-        for(let i = 0; i < this.phrase.length; i++ ){
-            if(this.phrase[i] !== ' '){
+        for(let i = 0; i < lower.length; i++ ){
+            if(lower[i] !== ' '){
                 let li = document.createElement('li');
                 li.setAttribute('class', 'hide letter');
-                li.textContent = this.phrase.charAt(i)
+                li.textContent = lower.charAt(i)
                 ul.appendChild(li);
-            }else if(this.phrase[i] === ' '){
+            }else if(lower[i] === ' '){
                 let liSpace = document.createElement('li');
                 liSpace.setAttribute('class', 'space');
-                liSpace.textContent = this.phrase.charAt(i)
+                liSpace.textContent = lower.charAt(i)
                 ul.appendChild(liSpace)
             }
-            console.log(this.phrase.charAt(i))
+            console.log(lower.charAt(i))
         }
         console.log(div);
         
     };
     checkLetter(){
         let keyboard = document.querySelectorAll('button');
-        let hiddenPhrase = document.querySelectorAll('li.hide letter')
+        console.log(this.phrase)
+        let hiddenPhrase = this.phrase.toLowerCase()
         //adding event listener to all the buttons 
-        console.log(hiddenPhrase);
+        console.log('Check letter UwU');
+         let letters = []
         for (let i = 0; i < hiddenPhrase.length; i++){
-            console.log(hiddenPhrase[i])
+            letters.push(hiddenPhrase[i])
         }
-        for (let i = 0; i < keyboard.length; i++){
-            keyboard[i].addEventListener('change', (e) =>{
-                console.log(e.target);
-                //if the letter matches any letter in our phrase 
-                if(e.target){
 
-                }
+        for (let i = 0; i < keyboard.length; i++){
+            keyboard[i].addEventListener('click', (e) =>{
+                console.log(e.target.textContent);
+                //if the letter matches any letter in our phrase 
+                letters.forEach(letter => {
+                    console.log(letter)
+                    if(e.target.textContent == letter){ 
+                        console.log('match')
+                    }
+                })
             });
         }
         
@@ -60,5 +68,5 @@ class Phrase{
     showMatchedNumber(){}
 }
 //test phrase 
-const test = new Phrase('H El lo');
+const test = new Phrase();
 console.log(test);
