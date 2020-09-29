@@ -20,7 +20,7 @@ class Phrase{
         console.log(this.phrase)
         let lower = this.phrase.toLowerCase();
         console.log(lower)
-        //this will change HEllO to hello/ log each letter 
+        //this will add the phrase to the display 
         for(let i = 0; i < lower.length; i++ ){
             if(lower[i] !== ' '){
                 let li = document.createElement('li');
@@ -55,11 +55,13 @@ class Phrase{
                 letters.forEach(letter => {
                     console.log(letter)
                     if(e.target.textContent == letter){ 
-                        console.log('match')
-                        console.log(letter)
-                        letter.setAttribute('class', 'show');
-                        console.log(letter)
+                        console.log(true)
+                        return true
+                    }else {
+                        console.log(false)
+                        return false
                     }
+                    
                 })
 
             });
@@ -68,8 +70,17 @@ class Phrase{
     }
 
 
-    showMatchedNumber(){}
+    showMatchedLetter(){
+        if (this.checkLetter == true){
+            console.log('true')
+            this.checkLetter
+
+
+
+        }else{
+            console.log('false')
+        }
+    }
 }
 //test phrase 
 const test = new Phrase();
-console.log(test);

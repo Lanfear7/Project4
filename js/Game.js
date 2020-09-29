@@ -29,6 +29,14 @@ class Game {
         //setting a instance of newPhrase and passing it the random phrase so the Phrase class can add that phrase to the DOM
         new Phrase(random).addPhraseToDisplay()
         new Phrase(random).checkLetter()
+        let keyboard = document.querySelectorAll('button');
+        for (let i = 0; i < keyboard.length; i++){
+            keyboard[i].addEventListener('click', (e) =>{
+                console.log('startgame click')
+                new Phrase(random).showMatchedLetter()
+            })
+        };
+
         //adding the logic to the game wit the handelInteraction class method 
         this.handelInteraction()
 
@@ -46,15 +54,6 @@ class Game {
 
 
     handelInteraction(){
-        let keyBoard = document.querySelectorAll('.key');
-        let DOMphrase = document.getElementById('phrase')
-        let ul = DOMphrase.childNodes
-        let phrases = ul[1].childNodes
-
-        //for loop to to a listener on the keys 
-       
-
-
     }
 
 
