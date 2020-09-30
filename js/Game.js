@@ -3,6 +3,7 @@ class Game {
     constructor(){
         let game = document.getElementById('btn__reset');
         game.addEventListener('click', (e) =>{
+            console.log('game has started')
             let startBackground = document.querySelector('#overlay')
             startBackground.style.display = 'none'
             this.startGame()
@@ -28,12 +29,14 @@ class Game {
         this.activePhrase = random
         //setting a instance of newPhrase and passing it the random phrase so the Phrase class can add that phrase to the DOM
         new Phrase(random).addPhraseToDisplay()
-        new Phrase(random).checkLetter()
+        new Phrase(random).checkLetter(random)
         let keyboard = document.querySelectorAll('button');
         for (let i = 0; i < keyboard.length; i++){
             keyboard[i].addEventListener('click', (e) =>{
-                console.log('startgame click')
-                new Phrase(random).showMatchedLetter()
+                
+                console.log('show matched letters')
+                new Phrase(random).showMatchedLetter(e.target)
+                console.log('matched letter has run')
             })
         };
 

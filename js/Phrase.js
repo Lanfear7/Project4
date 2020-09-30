@@ -38,49 +38,36 @@ class Phrase{
         console.log(div);
         
     };
-    checkLetter(){
+    checkLetter(phrase){
         let keyboard = document.querySelectorAll('button');
-        console.log(this.phrase)
-        let hiddenPhrase = this.phrase.toLowerCase()
-        //adding event listener to all the buttons 
-        console.log('Check letter UwU');
-         let letters = []
-        for (let i = 0; i < hiddenPhrase.length; i++){
-            letters.push(hiddenPhrase[i])
-        }
-
+        console.log(this.phrase.length)
         for (let i = 0; i < keyboard.length; i++){
             keyboard[i].addEventListener('click', (e) =>{
-                //if the letter matches any letter in our phrase 
-                letters.forEach(letter => {
-                    console.log(letter)
-                    if(e.target.textContent == letter){ 
+                //if the letter matches any letter in our phrase it will return true else false 
+                 console.log(phrase)
+                 console.log(e.target.textContent)
+                for(let j = 0; j < phrase.length; j ++){
+                    if(e.target.textContent == phrase[j]){
+                        console.log(e.target.textContent) 
                         console.log(true)
                         return true
                     }else {
                         console.log(false)
                         return false
                     }
-                    
-                })
-
+                }
+                
             });
 
         } 
     }
 
 
-    showMatchedLetter(){
-        if (this.checkLetter == true){
-            console.log('true')
-            this.checkLetter
-
-
-
-        }else{
-            console.log('false')
-        }
-    }
+    showMatchedLetter(letter){}
 }
+
 //test phrase 
 const test = new Phrase();
+
+
+
