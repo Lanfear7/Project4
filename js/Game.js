@@ -30,10 +30,9 @@ class Game {
         //setting a instance of newPhrase and passing it the random phrase so the Phrase class can add that phrase to the DOM
         new Phrase(random).addPhraseToDisplay()
         new Phrase(random).checkLetter(random)
-        let keyboard = document.querySelectorAll('button');
+        let keyboard = document.querySelectorAll('.key');
         for (let i = 0; i < keyboard.length; i++){
             keyboard[i].addEventListener('click', (e) =>{
-                
                 console.log('show matched letters')
                 new Phrase(random).showMatchedLetter(e.target)
                 console.log('matched letter has run')

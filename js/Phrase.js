@@ -17,9 +17,9 @@ class Phrase{
         let div = document.querySelector('#phrase')
         let ul = document.querySelector('ul')
 
-        console.log(this.phrase)
+        //console.log(this.phrase)
         let lower = this.phrase.toLowerCase();
-        console.log(lower)
+        //console.log(lower)
         //this will add the phrase to the display 
         for(let i = 0; i < lower.length; i++ ){
             if(lower[i] !== ' '){
@@ -33,29 +33,34 @@ class Phrase{
                 liSpace.textContent = lower.charAt(i)
                 ul.appendChild(liSpace)
             }
-            console.log(lower.charAt(i))
+            //console.log(lower.charAt(i))
         }
-        console.log(div);
+        //console.log(div);
         
     };
     checkLetter(phrase){
-        let keyboard = document.querySelectorAll('button');
-        console.log(this.phrase.length)
+        let keyboard = document.querySelectorAll('.key');
+        let lower = phrase.toLowerCase();
+        //console.log(lower.length)
+        let letters = []
+        for (let i = 0; i <lower.length; i++){
+            letters.push(lower[i])
+        }
+
         for (let i = 0; i < keyboard.length; i++){
             keyboard[i].addEventListener('click', (e) =>{
-                //if the letter matches any letter in our phrase it will return true else false 
-                 console.log(phrase)
-                 console.log(e.target.textContent)
-                for(let j = 0; j < phrase.length; j ++){
-                    if(e.target.textContent == phrase[j]){
-                        console.log(e.target.textContent) 
-                        console.log(true)
+                //if the letter matches any letter in our phrase 
+                letters.forEach(letter => {
+                    //console.log(letter)
+                    if(e.target.textContent == letter){ 
+                        //console.log(true)
                         return true
                     }else {
-                        console.log(false)
+                        //console.log(false)
                         return false
                     }
-                }
+                    
+                })
                 
             });
 
@@ -63,8 +68,20 @@ class Phrase{
     }
 
 
-    showMatchedLetter(letter){}
+    showMatchedLetter(guess){
+        let phraseLetter = document.querySelectorAll('li.hide.letter')
+        phraseLetter.forEach(letter =>{
+            console.log(letter.textContent)
+            if(guess.textContent == letter.textContent.toLowerCase()){
+                letter.setAttribute('class', 'show')
+            }else{
+                return false
+            }
+        })
+    }
+        
 }
+
 
 //test phrase 
 const test = new Phrase();
