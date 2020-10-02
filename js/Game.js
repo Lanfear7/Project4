@@ -2,7 +2,7 @@ class Game {
 
     constructor(){
         let game = document.getElementById('btn__reset');
-        game.addEventListener('click', (e) =>{
+        game.addEventListener('click', () =>{
             console.log('game has started')
             let startBackground = document.querySelector('#overlay')
             startBackground.style.display = 'none'
@@ -25,22 +25,24 @@ class Game {
    
     startGame(){
         //this will call getRandomPhrase\/
-        const random = this.getRandomPhrase()
+        const random = this.getRandomPhrase().toLowerCase()
         this.activePhrase = random
         //setting a instance of newPhrase and passing it the random phrase so the Phrase class can add that phrase to the DOM
         new Phrase(random).addPhraseToDisplay()
-        new Phrase(random).checkLetter(random)
+        
         let keyboard = document.querySelectorAll('.key');
         for (let i = 0; i < keyboard.length; i++){
             keyboard[i].addEventListener('click', (e) =>{
+                new Phrase(random).checkLetter(random, e.target)
                 console.log('show matched letters')
                 new Phrase(random).showMatchedLetter(e.target)
+                this.handelInteraction(e.target, random)
                 console.log('matched letter has run')
             })
         };
 
         //adding the logic to the game wit the handelInteraction class method 
-        this.handelInteraction()
+        
 
     }
 
@@ -55,14 +57,22 @@ class Game {
     }
 
 
-    handelInteraction(){
+    handelInteraction(guess){
+        const random = this.getRandomPhrase()
+        let guessText = guess.textContent
+        let t = new Phrase(random).test(2)
+       
+
     }
 
 
     removeLife(){
-        let life = document.querySelectorAll('.tries')
-        console.log(life);
-
+        let heartArr =[]
+        let hearts = document.querySelectorAll('.tries')
+        hearts.forEach( heart =>{
+            heartArr.push(heart)
+        })
+       
     }
 
     checkForWin(){

@@ -38,40 +38,32 @@ class Phrase{
         //console.log(div);
         
     };
-    checkLetter(phrase){
-        let keyboard = document.querySelectorAll('.key');
-        let lower = phrase.toLowerCase();
-        //console.log(lower.length)
-        let letters = []
-        for (let i = 0; i <lower.length; i++){
-            letters.push(lower[i])
+    checkLetter(phrase, letter){
+        console.log(phrase)
+        console.log(letter.textContent)
+        let userGuess = letter.textContent
+        let phraseArr = []
+        for(let i = 0; i < phrase.length; i++){
+            if(phrase[i] !== ' '){
+                phraseArr.push(phrase[i])
+            }
         }
-
-        for (let i = 0; i < keyboard.length; i++){
-            keyboard[i].addEventListener('click', (e) =>{
-                //if the letter matches any letter in our phrase 
-                letters.forEach(letter => {
-                    //console.log(letter)
-                    if(e.target.textContent == letter){ 
-                        //console.log(true)
-                        return true
-                    }else {
-                        //console.log(false)
-                        return false
-                    }
-                    
-                })
-                
-            });
-
-        } 
+        for(let j = 0; j < phraseArr.length; j++){
+            if(userGuess == phraseArr[j]){
+                console.log('true')
+                //return true
+            }else{
+                console.log('false')
+                //return false 
+            }
+        }
     }
 
 
     showMatchedLetter(guess){
         let phraseLetter = document.querySelectorAll('li.hide.letter')
         phraseLetter.forEach(letter =>{
-            console.log(letter.textContent)
+            //console.log(letter.textContent)
             if(guess.textContent == letter.textContent.toLowerCase()){
                 letter.setAttribute('class', 'show')
             }else{
@@ -80,8 +72,15 @@ class Phrase{
         })
     }
         
+    //test method to prove im not crazy and return works how it should 
+    test(a){
+        if(a > 4 ){
+            return true
+        }else {
+            return false
+        }
+    }
 }
-
 
 //test phrase 
 const test = new Phrase();
