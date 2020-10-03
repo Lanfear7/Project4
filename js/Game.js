@@ -66,13 +66,19 @@ class Game {
 
 
     removeLife(){
-        let heartArr =[]
-        let hearts = document.querySelectorAll('.tries')
-        hearts.forEach( heart =>{
-            heartArr.push(heart)
+        let hearts = document.querySelectorAll('img')
+        let listHearts = [];
+        console.log(hearts)
+        hearts.forEach(heart => {
+            listHearts.push(heart)
         })
-       
+        let popped = listHearts.pop()
+        console.log(popped)
+        popped.src = "images/lostHeart.png"
     }
+        
+       
+    
 
     checkForWin(){
 

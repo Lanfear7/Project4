@@ -56,6 +56,7 @@ class Phrase{
             this.showMatchedLetter(userGuess)
         }else{
             letter.setAttribute('class', 'wrong')
+            new Game().removeLife()
         }
         
     }
