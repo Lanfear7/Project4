@@ -35,7 +35,6 @@ class Game {
             keyboard[i].addEventListener('click', (e) =>{
                 new Phrase(random).checkLetter(random, e.target)
                 console.log('show matched letters')
-                new Phrase(random).showMatchedLetter(e.target)
                 this.handelInteraction(e.target, random)
                 console.log('matched letter has run')
             })

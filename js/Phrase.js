@@ -41,22 +41,23 @@ class Phrase{
     checkLetter(phrase, letter){
         console.log(phrase)
         console.log(letter.textContent)
+        let pass = letter
         let userGuess = letter.textContent
         let phraseArr = []
         for(let i = 0; i < phrase.length; i++){
             if(phrase[i] !== ' '){
                 phraseArr.push(phrase[i])
+                phraseArr.includes(userGuess)
             }
         }
-        for(let j = 0; j < phraseArr.length; j++){
-            if(userGuess == phraseArr[j]){
-                console.log('true')
-                //return true
-            }else{
-                console.log('false')
-                //return false 
-            }
+        if(phraseArr.includes(userGuess) == true){
+            console.log('hahahhahaha')
+            letter.setAttribute('class', 'chosen')
+            this.showMatchedLetter(userGuess)
+        }else{
+            letter.setAttribute('class', 'wrong')
         }
+        
     }
 
 
@@ -64,7 +65,7 @@ class Phrase{
         let phraseLetter = document.querySelectorAll('li.hide.letter')
         phraseLetter.forEach(letter =>{
             //console.log(letter.textContent)
-            if(guess.textContent == letter.textContent.toLowerCase()){
+            if(guess == letter.textContent.toLowerCase()){
                 letter.setAttribute('class', 'show')
             }else{
                 return false
