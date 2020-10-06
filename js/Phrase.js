@@ -39,9 +39,8 @@ class Phrase{
         
     };
     checkLetter(phrase, letter){
-        console.log(phrase)
-        console.log(letter.textContent)
-        let pass = letter
+        //console.log(phrase)
+        //console.log(letter.textContent)
         let userGuess = letter.textContent
         let phraseArr = []
         for(let i = 0; i < phrase.length; i++){
@@ -50,8 +49,7 @@ class Phrase{
                 phraseArr.includes(userGuess)
             }
         }
-        if(phraseArr.includes(userGuess) == true){
-            console.log('hahahhahaha')
+        if(phraseArr.includes(userGuess) == true){      
             letter.setAttribute('class', 'chosen')
             this.showMatchedLetter(userGuess)
         }else{
@@ -73,15 +71,8 @@ class Phrase{
             }
         })
     }
-        
-    //test method to prove im not crazy and return works how it should 
-    test(a){
-        if(a > 4 ){
-            return true
-        }else {
-            return false
-        }
-    }
+
+
 }
 
 //test phrase 

@@ -59,24 +59,25 @@ class Game {
     handelInteraction(guess){
         const random = this.getRandomPhrase()
         let guessText = guess.textContent
-        let t = new Phrase(random).test(2)
        
 
     }
 
 
-    removeLife(){
-        let hearts = document.querySelectorAll('img')
-        let listHearts = [];
+    removeLife() { // Updates heart image to simulate losing a life in the game
+        console.log(this.missed)
+        this.missed += 1;
+        const hearts = document.querySelector('img[src="images/liveHeart.png"]')
+        hearts.src = 'images/lostHeart.png';
+        console.log(this.missed)
+        if (this.missed === 5){
+            console.log('endgame')
+        }
         console.log(hearts)
-        hearts.forEach(heart => {
-            listHearts.push(heart)
-        })
-        let popped = listHearts.pop()
-        console.log(popped)
-        popped.src = "images/lostHeart.png"
+        return this.missed
     }
-        
+
+     
        
     
 
