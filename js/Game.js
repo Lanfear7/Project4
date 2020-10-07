@@ -33,13 +33,10 @@ class Game {
         let keyboard = document.querySelectorAll('.key');
         for (let i = 0; i < keyboard.length; i++){
             keyboard[i].addEventListener('click', (e) =>{
-                new Phrase(random).checkLetter(random, e.target)
-                console.log('show matched letters')
                 this.handelInteraction(e.target, random)
-                console.log('matched letter has run')
             })
         };
-
+        this.checkForWin(random)
         //adding the logic to the game wit the handelInteraction class method 
         
 
@@ -56,11 +53,17 @@ class Game {
     }
 
 
-    handelInteraction(guess){
-        const random = this.getRandomPhrase()
-        let guessText = guess.textContent
-       
-
+    handelInteraction(guess, phrase){
+        let match = new Phrase().checkLetter(phrase, guess)
+        if(match == false){
+            guess.setAttribute('class', 'wrong')
+            this.removeLife()
+        }else{
+            console.log('show letter')
+            guess.setAttribute('class', 'chosen')
+            new Phrase().showMatchedLetter(guess)
+            this.checkForWin(phrase)
+        }
     }
 
 
@@ -71,24 +74,57 @@ class Game {
         hearts.src = 'images/lostHeart.png';
         console.log(this.missed)
         if (this.missed === 5){
-            console.log('endgame')
+            this.gameOver(false)
         }
-        console.log(hearts)
-        return this.missed
     }
 
      
        
     
 
-    checkForWin(){
-
+    checkForWin(phrase){
+        let show = document.querySelectorAll('li.show')
+        console.log(show.length)
+        console.log(phrase.length)
+        let phraseArr = []
+        for(let i = 0; i < phrase.length; i++){
+            if(phrase[i] !== ' '){
+                phraseArr.push(phrase[i])
+            }
+        }
+        console.log(phraseArr.length)
+        if(show.length == phraseArr.length){
+            this.gameOver(true)
+        }else{
+            console.log('keep guessing')
+        }
 
     }
 
-    gameOver(){
+    gameOver(win){
+        let message = document.querySelector('h1#game-over-message')
+        let overlay = document.querySelector('div#overlay')
+        if(win == true){
+            this.removePhrase()
+            message.textContent = 'You Win!!!!'
+            overlay.setAttribute('class', 'win')
+            overlay.style.display = ''
+        }else if (win == false){
+            this.removePhrase()
+            message.textContent = 'You Lose'
+            overlay.setAttribute('class', 'lose')
+            overlay.style.display = ''
+        }
 
 
+    }
+    removePhrase(){
+        let active = this.activePhrase
+        let ul = document.querySelector('ul')
+        for(let i = 0; i < active.length; i++){
+            
+        }
+        return
     }
 
 

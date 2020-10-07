@@ -16,6 +16,7 @@ class Phrase{
         //creating the DOM elements 
         let div = document.querySelector('#phrase')
         let ul = document.querySelector('ul')
+        console.log(ul)
 
         //console.log(this.phrase)
         let lower = this.phrase.toLowerCase();
@@ -49,22 +50,21 @@ class Phrase{
                 phraseArr.includes(userGuess)
             }
         }
+        //keybord colors
         if(phraseArr.includes(userGuess) == true){      
-            letter.setAttribute('class', 'chosen')
-            this.showMatchedLetter(userGuess)
+            return true
         }else{
-            letter.setAttribute('class', 'wrong')
-            new Game().removeLife()
+            return false
         }
         
     }
 
 
     showMatchedLetter(guess){
+        //phrase colors 
         let phraseLetter = document.querySelectorAll('li.hide.letter')
         phraseLetter.forEach(letter =>{
-            //console.log(letter.textContent)
-            if(guess == letter.textContent.toLowerCase()){
+            if(guess.textContent == letter.textContent.toLowerCase()){
                 letter.setAttribute('class', 'show')
             }else{
                 return false
