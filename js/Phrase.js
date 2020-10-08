@@ -35,18 +35,8 @@ class Phrase{
         
     };
     checkLetter(phrase, letter){
-        //console.log(phrase)
-        //console.log(letter.textContent)
         let userGuess = letter.textContent
-        let phraseArr = []
-        for(let i = 0; i < phrase.length; i++){
-            if(phrase[i] !== ' '){
-                phraseArr.push(phrase[i])
-                phraseArr.includes(userGuess)
-            }
-        }
-        //keybord colors
-        if(phraseArr.includes(userGuess) == true){      
+        if(phrase.includes(userGuess) == true){      
             return true
         }else{
             return false

@@ -24,6 +24,7 @@ class Game {
     }
    
     startGame(){
+        
         //reset phrase
         let active = this.activePhrase
         if (active != null){
@@ -35,6 +36,9 @@ class Game {
                 ul.remove(children)
                 
             }
+            let newul = document.createElement('ul')
+            let div = document.querySelector('#phrase')
+            div.appendChild(newul)
             //reset buttons .chosen 
             let chosen = document.querySelectorAll('button.chosen')
             chosen.forEach(button => {
@@ -47,10 +51,17 @@ class Game {
             })
 
             //reset life 
-            this.missed = 0 
+            if(this.missed > 0 ){
+                let lostHearts = document.querySelectorAll('img[src="images/lostHeart.png"]')
+                lostHearts.forEach(heart =>{
+                    heart.src = 'images/liveHeart.png';
+                })
+            } 
+            this.activePhrase = null
         }
-       
+        this.missed = 0
         //this will call getRandomPhrase\/
+        console.log(this.missed)
         const random = this.getRandomPhrase().toLowerCase()
         this.activePhrase = random
         //setting a instance of newPhrase and passing it the random phrase so the Phrase class can add that phrase to the DOM
