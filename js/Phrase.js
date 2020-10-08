@@ -12,12 +12,7 @@ class Phrase{
     }
     //added methods to this class
     addPhraseToDisplay(){
-
-        //creating the DOM elements 
-        let div = document.querySelector('#phrase')
         let ul = document.querySelector('ul')
-        console.log(ul)
-
         //console.log(this.phrase)
         let lower = this.phrase.toLowerCase();
         //console.log(lower)
@@ -36,7 +31,7 @@ class Phrase{
             }
             //console.log(lower.charAt(i))
         }
-        //console.log(div);
+        return ul
         
     };
     checkLetter(phrase, letter){

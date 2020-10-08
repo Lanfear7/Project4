@@ -24,6 +24,32 @@ class Game {
     }
    
     startGame(){
+        //reset phrase
+        let active = this.activePhrase
+        if (active != null){
+            let ul = document.querySelector('ul')
+            let children = ul.childNodes
+            console.log(children.length)
+            for (let i = 0; i < children.length; i++){
+                children[i].innerHTML = ''
+                ul.remove(children)
+                
+            }
+            //reset buttons .chosen 
+            let chosen = document.querySelectorAll('button.chosen')
+            chosen.forEach(button => {
+                button.setAttribute('class', 'key')
+            })
+            //reset button .wrong
+            let chosenWrong = document.querySelectorAll('button.wrong')
+            chosenWrong.forEach(button => {
+                button.setAttribute('class', 'key')
+            })
+
+            //reset life 
+            this.missed = 0 
+        }
+       
         //this will call getRandomPhrase\/
         const random = this.getRandomPhrase().toLowerCase()
         this.activePhrase = random
@@ -70,9 +96,8 @@ class Game {
     removeLife() { // Updates heart image to simulate losing a life in the game
         console.log(this.missed)
         this.missed += 1;
-        const hearts = document.querySelector('img[src="images/liveHeart.png"]')
+        let hearts = document.querySelector('img[src="images/liveHeart.png"]')
         hearts.src = 'images/lostHeart.png';
-        console.log(this.missed)
         if (this.missed === 5){
             this.gameOver(false)
         }
@@ -84,15 +109,15 @@ class Game {
 
     checkForWin(phrase){
         let show = document.querySelectorAll('li.show')
-        console.log(show.length)
-        console.log(phrase.length)
+        //console.log(show.length)
+        //console.log(phrase.length)
         let phraseArr = []
         for(let i = 0; i < phrase.length; i++){
             if(phrase[i] !== ' '){
                 phraseArr.push(phrase[i])
             }
         }
-        console.log(phraseArr.length)
+        //console.log(phraseArr.length)
         if(show.length == phraseArr.length){
             this.gameOver(true)
         }else{
@@ -105,12 +130,10 @@ class Game {
         let message = document.querySelector('h1#game-over-message')
         let overlay = document.querySelector('div#overlay')
         if(win == true){
-            this.removePhrase()
             message.textContent = 'You Win!!!!'
             overlay.setAttribute('class', 'win')
             overlay.style.display = ''
         }else if (win == false){
-            this.removePhrase()
             message.textContent = 'You Lose'
             overlay.setAttribute('class', 'lose')
             overlay.style.display = ''
@@ -118,16 +141,7 @@ class Game {
 
 
     }
-    removePhrase(){
-        let active = this.activePhrase
-        let ul = document.querySelector('ul')
-        for(let i = 0; i < active.length; i++){
-            
-        }
-        return
-    }
-
 
 }
 const gameTest = new Game();
-console.log(Game);
+//console.log(Game);
