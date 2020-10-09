@@ -5,7 +5,7 @@ class Game{
             new Phrase('Big Poppa'),
             new Phrase('All Eyez On Me'),
             new Phrase('Gin and Juice'),
-            new Phrase('Shook ones pt ii'),
+            new Phrase('Shook ones part ii'),
             new Phrase('Survival of the Fittest'),
             new Phrase('Baknaffek'),
             new Phrase('Sex Machine Gun Funk')
@@ -47,8 +47,8 @@ class Game{
 
     removeLife(){
         this.missed += 1;
-        let hearts = document.querySelector('img[src="images/liveHeart.png"]')
-        hearts.src = 'images/lostHeart.png';
+        let hearts = document.querySelector('img[src="images/record.png"]')
+        hearts.src = 'images/brokenRecord.png';
         console.log(this.missed)
         if (this.missed === 5){
 
@@ -88,9 +88,9 @@ class Game{
         chosen.forEach(button => {
             button.setAttribute('class', 'key')
         })
-        let lostHearts = document.querySelectorAll('img[src="images/lostHeart.png"]')
+        let lostHearts = document.querySelectorAll('img[src="images/brokenRecord.png"]')
         lostHearts.forEach(heart =>{
-            heart.src = 'images/liveHeart.png';
+            heart.src = 'images/record.png';
         })
         let ul = document.querySelector('ul')
             let children = ul.childNodes

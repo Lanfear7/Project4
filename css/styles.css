@@ -72,6 +72,10 @@ button {
   height: 100%;
   max-height: 900px;
   text-align: center;
+  background-image: url("/images/background.jpg"); /* The image used */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
 }
 
 .section {
@@ -110,8 +114,9 @@ button {
 
 
 .show {
-  color: #fff;
-  background-color: #4ac0d5;
+  color: rgb(244, 247, 97);
+  text-shadow: 0 0 3px #fbff00, 0 0 5px #dbf307;
+  background-color: #000000;
   font-size: 20px;
   height: 65px;
   width: 65px;
@@ -122,7 +127,14 @@ button {
   animation-duration: .5s;
 }
 
-
+.hide.letter{
+  background-color: rgb(32, 32, 32);
+}
+#banner{
+  background-color: black;
+}
+.header{color: white;}
+#qwerty{background-color: white;}
 /* Keyboard */
 
 .keyrow {
@@ -131,15 +143,23 @@ button {
 }
 
 .chosen {
-  background: #3a3f58;
-  border-radius: 5px;
-  font-size: var(--font-size-medium);
-  color: #FFFFFF;
+  background-color: #000000;
+  color: rgb(181, 241, 154);
+  text-shadow: 0 0 3px #48ff00, 0 0 5px #00ff15
 }
 
 .wrong {
-  background: #f7a964;
-  color: #FFFFFF;
+  background-color: #000000;
+  color: rgb(241, 52, 52);
+  text-shadow: 0 0 3px #ff00f2, 0 0 5px #5f0101
+}
+
+.key{
+  background-color: #000000;
+  color: rgb(243, 191, 243);
+  text-shadow: 0 0 3px #ff00f2, 0 0 5px #c5047b
+
+  
 }
 
 .btn__reset {
@@ -158,7 +178,6 @@ button {
   border-bottom: solid 4px rgba(0, 0, 0, 0);
   border-right: solid 3px rgba(0, 0, 0, 0);
 }
-
 
 /* Overlay */
 
@@ -180,7 +199,7 @@ button {
 }
 
 .start {
-  background-color: #3a3f58;
+  background-color: #000000;
 }
 
 .start a {
@@ -188,7 +207,7 @@ button {
 }
 
 .win {
-  background-color: var(--color-win);
+  background-color: rgb(1, 17, 1);
 }
 
 .win a {
@@ -196,7 +215,7 @@ button {
 }
 
 .lose {
-  background-color: #f5785f;
+  background-color: #1b0909;
 }
 
 .lose a {
