@@ -15,11 +15,12 @@ class Game{
     }
 
     startGame(){
+        this.missed = 0;
         document.querySelector('#overlay').style.display = 'none'
         this.resetGame()
         this.activePhrase = this.getRandomPhrase();
         this.activePhrase.addPhraseToDisplay();
-        this.handelGameLogic()
+        this.handleInteraction()
 
     }
 
@@ -28,7 +29,7 @@ class Game{
        return this.phrases[Math.floor(Math.random() * this.phrases.length)]
     }
 
-    handelGameLogic(){
+    handleInteraction(){
         let keys = document.querySelectorAll('button.key');
         keys.forEach(key =>{
             key.addEventListener('click', (e) =>{
