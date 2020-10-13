@@ -4,6 +4,7 @@ class Phrase{
     }
 
     addPhraseToDisplay(){
+        //this will add each letter to the screen
         let ul = document.querySelector('ul')
         for(let i= 0; i < this.phrase.length; i++){
             console.log(this.phrase[i])
@@ -23,6 +24,7 @@ class Phrase{
 
 
     checkLetter(guess){
+        //this will check if the user input in included in the phrase 
         if(this.phrase.includes(guess) == true){
             return true
         }else{
@@ -31,7 +33,7 @@ class Phrase{
     }
 
     showMatchedLetter(guess){
-        //phrase colors 
+        //if the users input matches a letter show the letter it matches
         let phraseLetter = document.querySelectorAll('li.hide.letter')
         phraseLetter.forEach(letter =>{
             if(guess == letter.textContent.toLowerCase()){

@@ -1,5 +1,6 @@
 class Game{
     constructor(){
+        //this will hold all the new phrases that call a "new Phrase" when you pick on 
         this.phrases = [
             new Phrase('Gangsters paradise'),
             new Phrase('Big Poppa'),
@@ -15,6 +16,7 @@ class Game{
     }
 
     startGame(){
+        //this will start the game by calling all the methods
         console.log(this.activePhrase)
         document.querySelector('#overlay').style.display = 'none'
         this.resetGame()
@@ -42,6 +44,7 @@ class Game{
     }
 
     removeLife(){
+        //this will remove a life and replace it with a broken record
         this.missed += 1;
         let hearts = document.querySelector('img[src="images/record.png"]')
         hearts.src = 'images/brokenRecord.png';
@@ -52,6 +55,7 @@ class Game{
         }
     }
      checkForWin(){
+         //this will simply check if the hidden phrase has any more 'hidden' letters
          let hide = document.querySelectorAll('li.hide.letter')
          if(hide.length == 0){
              this.gameOver(true)
@@ -59,6 +63,7 @@ class Game{
      }
 
     gameOver(win){
+        //this will display either a win or a lose screen
         let message = document.querySelector('h1#game-over-message')
         let overlay = document.querySelector('div#overlay')
         console.log(overlay)
@@ -76,6 +81,7 @@ class Game{
     }
 
     resetGame(){
+        //this will reset the game board for the next round 
         let chosenWrong = document.querySelectorAll('button.wrong')
             chosenWrong.forEach(button => {
                 button.setAttribute('class', 'key')
