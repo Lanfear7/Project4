@@ -15,12 +15,11 @@ class Game{
     }
 
     startGame(){
-        this.missed = 0;
+        console.log(this.activePhrase)
         document.querySelector('#overlay').style.display = 'none'
         this.resetGame()
         this.activePhrase = this.getRandomPhrase();
         this.activePhrase.addPhraseToDisplay();
-        this.handleInteraction()
 
     }
 
@@ -29,21 +28,17 @@ class Game{
        return this.phrases[Math.floor(Math.random() * this.phrases.length)]
     }
 
-    handleInteraction(){
-        let keys = document.querySelectorAll('button.key');
-        keys.forEach(key =>{
-            key.addEventListener('click', (e) =>{
-                this.activePhrase.checkLetter(e.target.textContent)
-                if(this.activePhrase.checkLetter(e.target.textContent) == true){
-                    this.activePhrase.showMatchedLetter(e.target.textContent)
-                    e.target.setAttribute('class', 'chosen')
-                    this.checkForWin()
-                }else{
-                    e.target.setAttribute('class', 'wrong')
-                    this.removeLife()
-                }
-            })
-        })
+    handleInteraction(clicked){
+        console.log(this.activePhrase)
+        let userInput = clicked.textContent
+        if(this.activePhrase.checkLetter(userInput) == true){
+            this.activePhrase.showMatchedLetter(userInput)
+            clicked.setAttribute('class', 'chosen')
+            this.checkForWin()
+        }else if(this.activePhrase.checkLetter(userInput) == false){
+            clicked.setAttribute('class', 'wrong')
+            this.removeLife()
+        }
     }
 
     removeLife(){
@@ -93,18 +88,8 @@ class Game{
         lostHearts.forEach(heart =>{
             heart.src = 'images/record.png';
         })
-        let ul = document.querySelector('ul')
-            let children = ul.childNodes
-            console.log(children.length)
-            for (let i = 0; i < children.length; i++){
-                children[i].innerHTML = ''
-                ul.remove(children)
-                
-            }
-            let newul = document.createElement('ul')
-            let div = document.querySelector('#phrase')
-            div.appendChild(newul)
-            
+        document.querySelector('ul').textContent = ''
+        this.activePhrase = null
     }
 
 }
