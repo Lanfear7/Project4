@@ -2,14 +2,12 @@ class Game{
     constructor(){
         //this will hold all the new phrases that call a "new Phrase" when you pick on 
         this.phrases = [
-            new Phrase('Gangsters paradise'),
-            new Phrase('Big Poppa'),
-            new Phrase('All Eyez On Me'),
-            new Phrase('Gin and Juice'),
-            new Phrase('Shook ones part ii'),
-            new Phrase('Survival of the Fittest'),
-            new Phrase('Baknaffek'),
-            new Phrase('Sex Machine Gun Funk')
+            new Phrase('hello darling'),
+            new Phrase('help me make it through the night'),
+            new Phrase('reck of old ninty seven'),
+            new Phrase('iv been everywhere '),
+            new Phrase('take this job and shove it ')
+
         ];
         this.missed = 0;
         this.activePhrase = null;
@@ -32,14 +30,20 @@ class Game{
 
     handleInteraction(clicked){
         console.log(this.activePhrase)
+        clicked.disabled = true
         let userInput = clicked.textContent
         if(this.activePhrase.checkLetter(userInput) == true){
             this.activePhrase.showMatchedLetter(userInput)
             clicked.setAttribute('class', 'chosen')
-            this.checkForWin()
+            if(this.checkForWin() == true){
+                this.gameOver(true)
+            }
         }else if(this.activePhrase.checkLetter(userInput) == false){
             clicked.setAttribute('class', 'wrong')
             this.removeLife()
+            if(this.gameOver == false){
+                this.gameOver(false)
+            }
         }
     }
 
@@ -58,7 +62,9 @@ class Game{
          //this will simply check if the hidden phrase has any more 'hidden' letters
          let hide = document.querySelectorAll('li.hide.letter')
          if(hide.length == 0){
-             this.gameOver(true)
+             return true
+         }else{
+             return false
          }
      }
 
@@ -74,7 +80,7 @@ class Game{
             overlay.style.display = ''
         }else if (win == false){
             console.log('you lose')
-            message.textContent = "Need to need up on old school rap"
+            message.textContent = "Need to read up on old school rap"
             overlay.setAttribute('class', 'lose')
             overlay.style.display = ''
         }
@@ -85,10 +91,12 @@ class Game{
         let chosenWrong = document.querySelectorAll('button.wrong')
             chosenWrong.forEach(button => {
                 button.setAttribute('class', 'key')
+                button.disabled = false
             })
         let chosen = document.querySelectorAll('button.chosen')
         chosen.forEach(button => {
             button.setAttribute('class', 'key')
+            button.disabled = false
         })
         let lostHearts = document.querySelectorAll('img[src="images/brokenRecord.png"]')
         lostHearts.forEach(heart =>{
