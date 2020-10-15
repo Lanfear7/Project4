@@ -7,7 +7,6 @@ class Phrase{
         //this will add each letter to the screen
         let ul = document.querySelector('ul')
         for(let i= 0; i < this.phrase.length; i++){
-            console.log(this.phrase[i])
             if(this.phrase[i] === ' '){
                 let liSpace = document.createElement('li');
                 liSpace.setAttribute('class', 'space');

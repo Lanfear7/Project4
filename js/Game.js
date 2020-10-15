@@ -2,12 +2,14 @@ class Game{
     constructor(){
         //this will hold all the new phrases that call a "new Phrase" when you pick on 
         this.phrases = [
-            new Phrase('hello darling'),
-            new Phrase('help me make it through the night'),
-            new Phrase('reck of old ninty seven'),
-            new Phrase('iv been everywhere '),
-            new Phrase('take this job and shove it ')
-
+            new Phrase('Gangsters paradise'),
+            new Phrase('Big Poppa'),
+            new Phrase('All Eyez On Me'),
+            new Phrase('Gin and Juice'),
+            new Phrase('Shook ones part ii'),
+            new Phrase('Survival of the Fittest'),
+            new Phrase('Baknaffek'),
+            new Phrase('Sex Machine Gun Funk')
         ];
         this.missed = 0;
         this.activePhrase = null;
@@ -15,7 +17,6 @@ class Game{
 
     startGame(){
         //this will start the game by calling all the methods
-        console.log(this.activePhrase)
         document.querySelector('#overlay').style.display = 'none'
         this.resetGame()
         this.activePhrase = this.getRandomPhrase();
@@ -29,7 +30,6 @@ class Game{
     }
 
     handleInteraction(clicked){
-        console.log(this.activePhrase)
         clicked.disabled = true
         let userInput = clicked.textContent
         if(this.activePhrase.checkLetter(userInput) == true){
@@ -52,9 +52,7 @@ class Game{
         this.missed += 1;
         let hearts = document.querySelector('img[src="images/record.png"]')
         hearts.src = 'images/brokenRecord.png';
-        console.log(this.missed)
         if (this.missed === 5){
-
             this.gameOver(false)
         }
     }
@@ -72,15 +70,12 @@ class Game{
         //this will display either a win or a lose screen
         let message = document.querySelector('h1#game-over-message')
         let overlay = document.querySelector('div#overlay')
-        console.log(overlay)
-        console.log(message)
         if(win == true){
             message.textContent = "Kickin it old school!"
             overlay.setAttribute('class', 'win')
             overlay.style.display = ''
         }else if (win == false){
-            console.log('you lose')
-            message.textContent = "Need to read up on old school rap"
+            message.textContent = `Need to read up on old school rap. The phrase was "${this.activePhrase.phrase}"`
             overlay.setAttribute('class', 'lose')
             overlay.style.display = ''
         }
@@ -105,5 +100,6 @@ class Game{
         document.querySelector('ul').textContent = ''
         this.activePhrase = null
     }
+
 
 }
