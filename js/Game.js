@@ -9,7 +9,8 @@ class Game{
             new Phrase('Shook ones part ii'),
             new Phrase('Survival of the Fittest'),
             new Phrase('Baknaffek'),
-            new Phrase('Sex Machine Gun Funk')
+            new Phrase('Sex Machine Gun Funk'),
+            new Phrase('Boyz N The Hood')
         ];
         this.missed = 0;
         this.activePhrase = null;
