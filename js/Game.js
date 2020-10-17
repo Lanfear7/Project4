@@ -10,7 +10,8 @@ class Game{
             new Phrase('Survival of the Fittest'),
             new Phrase('Baknaffek'),
             new Phrase('Sex Machine Gun Funk'),
-            new Phrase('Boyz N The Hood')
+            new Phrase('Boyz N The Hood'),
+            new Phrase('Eazy Duz It')
         ];
         this.missed = 0;
         this.activePhrase = null;
