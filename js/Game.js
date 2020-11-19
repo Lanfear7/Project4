@@ -2,16 +2,16 @@ class Game{
     constructor(){
         //this will hold all the new phrases that call a "new Phrase" when you pick on 
         this.phrases = [
-            new Phrase('Gangsters paradise'),
-            new Phrase('Big Poppa'),
-            new Phrase('All Eyez On Me'),
-            new Phrase('Gin and Juice'),
-            new Phrase('Shook ones part ii'),
-            new Phrase('Survival of the Fittest'),
-            new Phrase('Baknaffek'),
-            new Phrase('Sex Machine Gun Funk'),
-            new Phrase('Boyz N The Hood'),
-            new Phrase('Eazy Duz It')
+            new Phrase('All girls are the same'),
+            new Phrase('wishing well'),
+            new Phrase('Good days'),
+            new Phrase('killing my vibe'),
+            new Phrase('Falling Down'),
+            new Phrase('Switchblades'),
+            new Phrase('star shopping'),
+            new Phrase('I spoke to the devil in miami'),
+            new Phrase('Tightrope'),
+            new Phrase('Jocelyn Flores')
         ];
         this.missed = 0;
         this.activePhrase = null;
