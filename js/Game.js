@@ -77,7 +77,7 @@ class Game{
             overlay.setAttribute('class', 'win')
             overlay.style.display = ''
         }else if (win == false){
-            message.textContent = `Need to read up on old school rap. The phrase was "${this.activePhrase.phrase}"`
+            message.textContent = `Need to read up on alternative rap. The phrase was "${this.activePhrase.phrase}"`
             overlay.setAttribute('class', 'lose')
             overlay.style.display = ''
         }
